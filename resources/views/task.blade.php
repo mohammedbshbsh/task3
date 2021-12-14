@@ -45,20 +45,16 @@
                     <th>&nbsp;</th>
                     </thead>
                     <tbody>
-@foreach($task as $tas)
+        @foreach($task as $tas)
                     <tr>
                         <td class="table-text"><div>{{$tas->name}}</div></td>
 
-                        <!-- Task Delete Button -->
                         <td>
-                            <form action="#" method="POST">
-                                <button type="submit" class="btn btn-danger">
-                                    <i class="fa fa-btn fa-trash"></i>Delete
-                                </button>
-                            </form>
+                            <a class="btn btn-outline-primary" href="{{url('edit/task/').'/' .$tas->id}}"><span style="display:inline;">Edit</span></a>
+                            <a class="btn btn-outline-danger"  href="{{url('delete/task/').'/'.$tas->id}}"><span>Delete</span></a>
                         </td>
                     </tr>
-@endforeach
+        @endforeach
                     </tbody>
                 </table>
             </div>

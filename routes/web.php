@@ -16,5 +16,13 @@ use App\Http\Controllers\TasksController;
 */
 
 
-Route::get('/' , [TasksController::class , 'index']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+Route::get('/' , [TasksController::class , 'index'])->name('index');
 Route::post('/store' , [TasksController::class , 'store']);
+Route::get('/edit/task/{id}', [TasksController::class,'edit']);
+Route::put('/update/task/{id}', [TasksController::class,'update'])->name('update');
+Route::get('/delete/task/{id}', [TasksController::class,'destroy']);
+
